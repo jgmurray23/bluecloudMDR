@@ -1,0 +1,44 @@
+.recipe-display {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-fab{
+  background-color:blue
+}
+.mat-icon-button{
+  background-color:cornflowerblue;
+}
+.mat-button{
+
+  background-color:cornflowerblue;
+}
+
+.example-card {
+  max-width: 50px;
+  max-height: 50px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/*.example-header-image {*/
+  /*background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');*/
+  /*background-size: cover;*/
+/*}*/
+

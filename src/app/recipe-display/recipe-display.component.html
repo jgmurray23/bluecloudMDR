@@ -1,0 +1,93 @@
+<h3>Recipe</h3>
+<div>
+
+  <mat-form-field class="example-form-field">
+    <input matInput type="text" placeholder="Enter or SCAN TrayID" [(ngModel)]="trayItem.trayId"/>
+  </mat-form-field>
+
+  <button mat-fab (click)="refresh()"><mat-icon>add</mat-icon></button>
+  <mat-divider></mat-divider>
+
+  <!--<mat-card><mat-label>{{recipe.description}}</mat-label></mat-card>-->
+
+
+</div>
+
+<div class="recipe-display mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Position Stock# -->
+    <ng-container matColumnDef="stocknumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Stock # </mat-header-cell>
+      <mat-cell *matCellDef="let recipe"> {{recipe.stocknumber}} </mat-cell>
+    </ng-container>
+
+    <!-- Position VendorCatalogNumber# -->
+    <ng-container matColumnDef="vendorcatalognumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> VenCat/Ref </mat-header-cell>
+      <mat-cell *matCellDef="let recipe"> {{recipe.vendorcatalognumber}} </mat-cell>
+    </ng-container>
+
+    <!-- Position Qty -->
+    <ng-container matColumnDef="qty">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Qty </mat-header-cell>
+      <mat-cell *matCellDef="let recipe"> {{recipe.qty}} </mat-cell>
+    </ng-container>
+
+    <!--Order Qty -->
+    <ng-container matColumnDef="oqty">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Order Qty</mat-header-cell>
+      <mat-cell *matCellDef="let recipe">
+        <!--<button mat-button="BUTTON" (click)="imabutton(recipe.qty)">{{element.symbol}}</button>-->
+        <input matInput type="number" placeholder="Qty" [(ngModel)]="recipe.orderqty"/>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Position  -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let recipe"> {{recipe.description}} </mat-cell>
+    </ng-container>
+
+    <!-- Button Column -->
+    <ng-container matColumnDef="Zoom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Zoom </mat-header-cell>
+      <mat-cell *matCellDef="let recipe">
+        <!--<button mat-button="BUTTON" (click)="imabutton(recipe.qty)">{{element.symbol}}</button>-->
+        <button mat-button="Zoom" >Button</button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Image Displays -->
+    <ng-container matColumnDef="Image">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Images </mat-header-cell>
+      <mat-cell *matCellDef="let recipe">
+
+        <mat-card class="example-card">
+          <!--<mat-card-header>-->
+          <!--&lt;!&ndash;<div mat-card-avatar class="example-header-image"></div>&ndash;&gt;-->
+          <!--<mat-card-title>Shiba Inu</mat-card-title>-->
+          <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+        <!--</mat-card-header>-->
+          <img mat-card-image [src]="recipe.baseVencatURL" [alt]="recipe.baseVencatURL" >
+          <mat-card-content>
+
+          </mat-card-content>
+          <!--<mat-card-actions>-->
+            <!--<button mat-button>LIKE</button>-->
+            <!--<button mat-button>SHARE</button>-->
+          <!--</mat-card-actions>-->
+        </mat-card>
+
+
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</div>
+
+

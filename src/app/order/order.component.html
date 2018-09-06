@@ -1,0 +1,117 @@
+
+<div class="wrappertop">
+
+  <section class="righttop">
+    <h3>Login: {{user}}</h3>
+  </section>
+  <!--<section class="righttop">-->
+    <!---->
+  <!--</section>-->
+
+</div>
+
+<div class="wrapper">
+
+
+  <section class="left">
+    <mat-grid-list cols="4" rowHeight="6:4">
+
+      <mat-grid-tile><img class="tile-image" src="https://s3.ca-central-1.amazonaws.com/jbhor/GTIN.jpg"/></mat-grid-tile>
+      <mat-grid-tile><img class="tile-image" src="https://s3.ca-central-1.amazonaws.com/jbhor/HBIC.jpg"/></mat-grid-tile>
+      <mat-grid-tile>1. SCAN TOP BARCODE</mat-grid-tile>
+      <mat-grid-tile>2. SCAN BOTTOM BARCODE</mat-grid-tile>
+    </mat-grid-list>
+
+  </section>
+  <section class="right">
+
+  </section>
+
+</div>
+<p></p>
+
+<div>
+  <mat-form-field class="example-form-field" >
+    <input #inp1 (keyup.enter)="gotolot()" type="submit" matInput  type="text" stye="font-size: 1.5em"  [(ngModel)]="barcodeScanned" />
+    <mat-placeholder style="font-size: 1.5em" >{{placeholder}}</mat-placeholder>
+  </mat-form-field>
+
+</div>
+
+<div>
+<mat-divider></mat-divider>
+</div>
+<div class="recipe-display mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+
+    <!--  Stock# -->
+    <ng-container matColumnDef="stocknum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Stock # </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.stocknum  }} </mat-cell>
+    </ng-container>
+
+    <!--  VendorCatalogNumber# -->
+    <ng-container matColumnDef="vendorcatalognumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> VenCat/Ref </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.vendorcat }} </mat-cell>
+    </ng-container>
+
+    <!--  Lot -->
+    <ng-container matColumnDef="lotnum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lot </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.lotnum }} </mat-cell>
+    </ng-container>
+
+    <!--  Serial -->
+    <ng-container matColumnDef="serialnum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Serial </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.serialnum }} </mat-cell>
+    </ng-container>
+
+    <!-- Description  -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.description }} </mat-cell>
+    </ng-container>
+
+    <!-- Button Column -->
+    <ng-container matColumnDef="Remove">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>REMOVE</mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem">
+        <!--<button mat-button="BUTTON" (click)="imabutton(recipe.qty)">{{element.symbol}}</button>-->
+        <button  [ngClass]="{ 'highlight': hospitalItem.orderId >0 }"  mat-icon-button="remove" mat-button="remove"  (click)="removeItemFromArray(hospitalItem)"><mat-icon>{{hospitalItem.remover}}
+        </mat-icon></button>
+      </mat-cell>
+    </ng-container>
+
+    <!--  BARCODE# -->
+    <ng-container matColumnDef="barcodeScanned">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Barcode </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.barcodeScanned  }} </mat-cell>
+    </ng-container>
+
+    <!--  USER -->
+    <ng-container matColumnDef="emailAddress">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> USER </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.emailAddress  }} </mat-cell>
+    </ng-container>
+
+    <!--  ORDERID -->
+    <ng-container matColumnDef="orderId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> OrderId </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.orderId  }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{ 'highlight': hospitalItem.orderId >0 }" ></mat-row>
+
+  </mat-table>
+
+
+</div>
+<mat-divider></mat-divider><p></p>
+<div>
+  <button #savebutton mat-raised-button color="primary" (click)="save()">SAVE</button>
+</div>

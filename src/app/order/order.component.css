@@ -1,0 +1,31 @@
+.mat-icon-button{
+  background-color:red;
+}
+
+.highlight{
+  background-color: #42A948; /* green */
+}
+
+.wrapper {
+  display: flex;
+}
+.left {
+  flex: 0 0 75%;
+}
+.right {
+  flex: 1;
+}
+
+.wrappertop {
+  display: flex;
+}
+.lefttop {
+  flex: 1 1 70%;
+}
+.righttop {
+  flex: 1;
+}
+.tile-image {
+  width:75%;
+  height: 75%;
+}

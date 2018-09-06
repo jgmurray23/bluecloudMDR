@@ -1,0 +1,10 @@
+<form>
+  <div class="group">
+    <input #inp1 type="text" [(ngModel)]="barcodeScanned" name="bar" /><span class="highlight"></span><span class="bar"></span>
+    <label>SCAN BADGE</label>
+  </div>
+
+  <button (click)="loginButtonPressed()" type="button" class="button buttonBlue">LOGIN
+    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+  </button>
+</form>

@@ -1,0 +1,59 @@
+<!--<nav>-->
+  <!--<a routerLink="/recipe">Tray</a>-->
+  <!--<a routerLink="/order">Order</a>-->
+<!--</nav>-->
+<!--<router-outlet></router-outlet>-->
+
+
+<mat-grid-list cols="2" >
+  <mat-grid-tile>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Electronic Ordering</mat-card-title>
+      <mat-card-subtitle>Tray Assembly</mat-card-subtitle>
+    </mat-card-header>
+
+    <img height="200px" mat-card-image src="https://s3.ca-central-1.amazonaws.com/jbhor/TRAY.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>Coming Soon....
+
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <!--<button mat-button>TRAYS</button>-->
+      <nav><a routerLink="/recipe">Tray</a></nav>
+    </mat-card-actions>
+
+  </mat-card>
+
+    </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Electronic Ordering</mat-card-title>
+        <mat-card-subtitle>Screws</mat-card-subtitle>
+      </mat-card-header>
+
+      <img height="200px" mat-card-image src="https://s3.ca-central-1.amazonaws.com/jbhor/PLATES_SCREWS.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>Select this to order Stryker and Synthes screws from the carts
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <nav><a routerLink="/order">Order</a></nav>
+      </mat-card-actions>
+
+    </mat-card>
+
+  </mat-grid-tile>
+
+
+
+</mat-grid-list>
+
+
