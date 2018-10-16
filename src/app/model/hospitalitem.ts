@@ -43,7 +43,7 @@ export class HospitalItem {
 
   manufacturercatalognumber: string;
   vendorcat: string;
-  vendorcatalognumber:string;
+  vendorcatalognumber: string;
   vendorname: string;
   vendorcode: string;
   kanban: string;
@@ -65,4 +65,12 @@ export class HospitalItem {
   state: string;
   hbic: string;
   emailAddress: string;
+  logtimestamp: Date;
+  datestring: string;
+  trayName: string;
+  missing: boolean;
+  replaced: boolean;
+  trayId: string;
+  TrayMissingOrderItemsId: string;
+
 }

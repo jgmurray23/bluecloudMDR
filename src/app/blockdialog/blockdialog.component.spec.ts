@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WaitingDialogComponent } from './waiting-dialog.component';
+import { BlockdialogComponent } from './blockdialog.component';
 
-describe('WaitingDialogComponent', () => {
-  let component: WaitingDialogComponent;
-  let fixture: ComponentFixture<WaitingDialogComponent>;
+describe('BlockdialogComponent', () => {
+  let component: BlockdialogComponent;
+  let fixture: ComponentFixture<BlockdialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WaitingDialogComponent ]
+      declarations: [ BlockdialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WaitingDialogComponent);
+    fixture = TestBed.createComponent(BlockdialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

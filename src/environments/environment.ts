@@ -10,7 +10,14 @@ export const environment = {
   serviceURL: 'https://c9xo12ws2e.execute-api.ca-central-1.amazonaws.com/test1',
   gtinLookupURI: 'https://67cjybkj26.execute-api.ca-central-1.amazonaws.com/test1',
   hbicLookupURI: 'https://fzneod5n66.execute-api.ca-central-1.amazonaws.com/test1',
-  //saveURI: 'https://78gxodymu0.execute-api.ca-central-1.amazonaws.com/test1'
-  saveURI: 'https://4i3g3yvhsd.execute-api.ca-central-1.amazonaws.com/test1',
-  vcLookupURI: 'https://cvodterc3b.execute-api.ca-central-1.amazonaws.com/test1'
+  //PROD
+  //saveURI: 'https://4i3g3yvhsd.execute-api.ca-central-1.amazonaws.com/test1',
+  //TEST
+  saveURI: 'https://372pm5nka4.execute-api.ca-central-1.amazonaws.com/test1',
+  vcLookupURI: 'https://cvodterc3b.execute-api.ca-central-1.amazonaws.com/test1',
+  oldordersLookupURI: 'https://0foeonhu7h.execute-api.ca-central-1.amazonaws.com/test1',
+  getTraynamesURI: 'https://5x76q236b1.execute-api.ca-central-1.amazonaws.com/test1',
+  saveMissingURI: 'https://2q9b3xwubf.execute-api.ca-central-1.amazonaws.com/test1',
+  getTrayMissingItemsTwoWeeksURI: 'https://l7j7vipf74.execute-api.ca-central-1.amazonaws.com/test1',
+  saveReplacedURI: 'https://hnyw75l5ai.execute-api.ca-central-1.amazonaws.com/test1'
 };

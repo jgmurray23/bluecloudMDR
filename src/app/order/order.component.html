@@ -28,11 +28,27 @@
   </section>
 
 </div>
+
+<div><h3>SELECT TRAY NAME</h3></div>
+<div>
+
+
+
+  <mat-form-field >
+    <mat-select placeholder="Tray Names" [(value)]="traydefinitionselected" (focus)="focusFunction($event)" (focusout)="focusOutFunction($event)"   (selectionChange)="onChange($event)">
+      <mat-option *ngFor="let traydefinition of traydefinitions" [value]="traydefinition" style="font-size: 1.5em" >
+        {{ traydefinition.trayName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
 <p></p>
 
 <div>
   <mat-form-field class="example-form-field" >
-    <input #inp1 (keyup.enter)="gotolot()" type="submit" matInput  type="text" stye="font-size: 1.5em"  [(ngModel)]="barcodeScanned" />
+    <input #inp1 (keyup.enter)="gotolot()" type="submit" matInput  type="text" style="font-size: 1em"  [(ngModel)]="barcodeScanned" />
     <mat-placeholder style="font-size: 1.5em" >{{placeholder}}</mat-placeholder>
   </mat-form-field>
 
@@ -103,6 +119,14 @@
       <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.orderId  }} </mat-cell>
     </ng-container>
 
+    <!--  MISSING -->
+    <ng-container matColumnDef="missing">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Missing </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem">
+        <mat-checkbox [(ngModel)]="hospitalItem.missing"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
     <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{ 'highlight': hospitalItem.orderId >0 }" ></mat-row>
@@ -114,4 +138,164 @@
 <mat-divider></mat-divider><p></p>
 <div>
   <button #savebutton mat-raised-button color="primary" (click)="save()">SAVE</button>
+  <button #savebutton mat-raised-button color="primary" (click)="saveReplaced()">SAVE REPLACED</button>
 </div>
+
+<div><p></p></div>
+<div>
+  <mat-divider></mat-divider>
+</div>
+
+<!--This is the missing list-->
+<div *ngIf="dataSource2.data.length > 0"  class="recipe-display mat-elevation-z8">
+
+  <h3>Missing Items</h3>
+  <mat-table #table [dataSource]="dataSource2" matSort>
+
+
+    <!--  Stock# -->
+    <ng-container matColumnDef="stocknum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Stock # </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.stocknumber  }} </mat-cell>
+    </ng-container>
+
+    <!--  VendorCatalogNumber# -->
+    <ng-container matColumnDef="vendorcatalognumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> VenCat/Ref </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.vendorcat }} </mat-cell>
+    </ng-container>
+
+    <!--  Lot -->
+    <ng-container matColumnDef="lotnum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lot </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.lotnumber }} </mat-cell>
+    </ng-container>
+
+    <!--  Serial -->
+    <ng-container matColumnDef="serialnum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Serial </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.serialnum }} </mat-cell>
+    </ng-container>
+
+    <!-- Description  -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.description }} </mat-cell>
+    </ng-container>
+
+
+    <!--  USER -->
+    <ng-container matColumnDef="emailAddress">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> USER </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.emailAddress  }} </mat-cell>
+    </ng-container>
+
+    <!--  ORDERID -->
+    <ng-container matColumnDef="orderId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> OrderId </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.orderId  }} </mat-cell>
+    </ng-container>
+
+    <!--  REPLACED -->
+    <ng-container matColumnDef="replaced">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Replaced </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem">
+        <mat-checkbox [(ngModel)]="hospitalItem.replaced"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns2;" [ngClass]="{ 'highlight': hospitalItem.orderId >0 }" ></mat-row>
+
+  </mat-table>
+
+</div>
+
+<div>
+  <mat-divider></mat-divider>
+</div>
+
+<div *ngIf="showPrevOrdersTable" class="recipe-display mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource1" matSort>
+
+
+    <!--  Stock# -->
+    <ng-container matColumnDef="stocknum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Stock # </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.stocknumber  }} </mat-cell>
+    </ng-container>
+
+    <!--  VendorCatalogNumber# -->
+    <ng-container matColumnDef="vendorcatalognumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> VenCat/Ref </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.vendorcatalognumber }} </mat-cell>
+    </ng-container>
+
+    <!--  Lot -->
+    <ng-container matColumnDef="lotnum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lot </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.lotnumber }} </mat-cell>
+    </ng-container>
+
+    <!--  Serial -->
+    <ng-container matColumnDef="serialnum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Serial </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.serialnum }} </mat-cell>
+    </ng-container>
+
+    <!-- Description  -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.description }} </mat-cell>
+    </ng-container>
+
+    <!-- Button Column -->
+    <ng-container matColumnDef="Remove">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>OrderId</mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem">  {{ hospitalItem.orderId  }} </mat-cell>>
+    </ng-container>
+
+    <!--  BARCODE# -->
+    <ng-container matColumnDef="barcodeScanned">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Barcode </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.barcode  }} </mat-cell>
+    </ng-container>
+
+    <!--  USER -->
+    <ng-container matColumnDef="emailAddress">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> USER </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.emailAddress  }} </mat-cell>
+    </ng-container>
+
+    <!--  ORDERID -->
+    <ng-container matColumnDef="orderId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> OrderId </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.orderId  }} </mat-cell>
+    </ng-container>
+
+    <!--  timestamp -->
+    <ng-container matColumnDef="logtimestamp">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Time </mat-header-cell>
+      <mat-cell *matCellDef="let hospitalItem"> {{ hospitalItem.datestring }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns1;" [ngClass]="{ 'highlight': hospitalItem.orderId >0 }" ></mat-row>
+
+  </mat-table>
+
+</div>
+
+<mat-divider></mat-divider><p></p>
+
+  <mat-divider></mat-divider><p></p>
+  <div>
+    <button #savebutton mat-raised-button color="primary" (click)="refreshPREV()">PREV ORDERS</button>
+  </div>
+
+  <div><p></p></div>
+
+
+<div>

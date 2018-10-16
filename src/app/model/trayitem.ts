@@ -1,3 +1,5 @@
+import {Type} from '@angular/core';
+
 export class TrayItem {
    trayItemId: string;
    trayId: string;
@@ -9,4 +11,5 @@ export class TrayItem {
    lastUpdatedDate: number;
    orderqty: number;
   baseVencatURL: string;
+  trayName: string;
 }

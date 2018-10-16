@@ -15,7 +15,7 @@ import {
   MatInputModule,
   MatProgressSpinnerModule,
   MatGridListModule,
-  MatTableModule
+  MatTableModule, MatSelectModule, MatCheckboxModule
 } from '@angular/material';
 
 import {MatSortModule} from '@angular/material';
@@ -29,11 +29,12 @@ import {OrderServiceService} from './services/order-service.service';
 import {SaveService} from './services/save.service';
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './/app-routing.module';
-import {DialogOverviewExampleDialog, OrderComponent} from './order/order.component';
+//import {DialogOverviewExampleDialog, OrderComponent} from './order/order.component';
+import { OrderComponent } from './order/order.component';
 import { LoginComponent } from './login/login.component';
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import {LoginxferService} from './services/loginxfer.service';
-//import { WaitingDialogComponent } from './order/waiting-dialog/waiting-dialog.component';
+import { BlockdialogComponent } from './blockdialog/blockdialog.component';
 
 
 @NgModule({
@@ -41,13 +42,12 @@ import {LoginxferService} from './services/loginxfer.service';
     AppComponent,
     RecipeDisplayComponent,
     OrderComponent,
-    // WaitingDialogComponent,
-    DialogOverviewExampleDialog,
+    //DialogOverviewExampleDialog,
     LoginComponent,
-    MainmenuComponent
-
+    MainmenuComponent,
+    BlockdialogComponent
   ],
-  entryComponents: [DialogOverviewExampleDialog],
+  //entryComponents: [DialogOverviewExampleDialog],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -62,9 +62,15 @@ import {LoginxferService} from './services/loginxfer.service';
     MatDividerModule,
     MatCardModule,
     MatGridListModule,
+    MatSelectModule,
+    MatCheckboxModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
+    AppRoutingModule
+
+  ],
+  entryComponents: [
+    BlockdialogComponent
   ],
   providers: [RecipeService, OrderServiceService, SaveService, LoginxferService ],
 
